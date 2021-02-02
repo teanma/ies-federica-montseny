@@ -51,3 +51,30 @@ ALTER TABLE empleados RENAME TO employees;
 Cuidado con esta instrucción
 porque elimina los datos de una tabla
 */
+/*TRUNCATE TABLE employees;*/
+
+ALTER TABLE employees ADD (
+oficina int
+);
+
+DESCRIBE employees;
+
+ALTER TABLE employees ADD (
+jefe VARCHAR(20),
+departamento BIT
+);
+
+/*
+Cuidado al eliminar un campo, porque eliminas
+los datos del mismo
+*/
+
+ALTER TABLE employees DROP COLUMN jefe;
+
+DESCRIBE employees;
+
+ALTER TABLE employees ADD (
+boss VARCHAR(2)
+);
+
+ALTER TABLE employees MODIFY boss VARCHAR(20);
