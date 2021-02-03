@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-CREATE DATABASE if not exists prueba;
+CREATE TABLE if not exists prueba;
 
-=======
->>>>>>> c48ba579b9f39507b86fbd9ee239f976667a6ca4
 USE prueba;
 
 CREATE TABLE usuarios (

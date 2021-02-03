@@ -1,12 +1,11 @@
-<<<<<<< HEAD
+
 CREATE DATABASE if not exists gestionanimales;
 
 USE gestionanimales;
-=======
+
 CREATE DATABASE if not exists test;
 
 USE test;
->>>>>>> c48ba579b9f39507b86fbd9ee239f976667a6ca4
 
 SHOW DATABASES;
 
@@ -83,7 +82,6 @@ ALTER TABLE employees ADD (
 boss VARCHAR(2)
 );
 
-<<<<<<< HEAD
 ALTER TABLE employees MODIFY boss VARCHAR(20);
 
 DROP TABLE tasks;
@@ -112,6 +110,6 @@ SHOW CREATE TABLE employees;
 
 /*LISTADO DE TABLAS*/
 SHOW TABLES;
-=======
+
 ALTER TABLE employees MODIFY boss VARCHAR(20);
->>>>>>> c48ba579b9f39507b86fbd9ee239f976667a6ca4
+
