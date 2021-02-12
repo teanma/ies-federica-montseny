@@ -1,0 +1,28 @@
+CREATE DATABASE IF NOT EXISTS game_management;
+
+USE game_management;
+
+CREATE TABLE IF NOT EXISTS genres (
+id INT AUTO_INCREMENT PRIMARY KEY,
+genre_name VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS games (
+id INT AUTO_INCREMENT PRIMARY KEY,
+genre_id INT NOT NULL,
+game_name VARCHAR(20) NOT NULL,
+FOREIGN KEY (genre_id) REFERENCES genres (id),
+FOREIGN KEY (game_id) REFERENCES publishers (id)
+);
+
+CREATE TABLE IF NOT EXISTS game_publishers (
+id INT AUTO_INCREMENT PRIMARY KEY,
+game_id INT NOT NULL,
+publisher_id INT NOT NULL,
+FOREIGN KEY (game_id) REFERENCES  
+);
+
+CREATE TABLE IF NOT EXISTS publishers (
+id INT AUTO_INCREMENT PRIMARY KEY,
+publisher_name VARCHAR(20)
+);
