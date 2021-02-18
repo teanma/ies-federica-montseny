@@ -94,4 +94,18 @@ public class TicTacToeTests {
         // Test execution
         game.putX(1, 2);
     }
+
+    @Test(expected = NotYourTurnException.class)
+    public void notYourTurnTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
+        // setup scenario
+        Character[][] board = {
+                {null, null, null},
+                {null, null, 'X'},
+                {null, null, null},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        game.putX(1, 1);
+    }
 }
