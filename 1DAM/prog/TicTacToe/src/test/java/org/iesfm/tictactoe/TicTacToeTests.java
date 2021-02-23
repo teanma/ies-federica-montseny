@@ -14,9 +14,60 @@ public class TicTacToeTests {
     public void noMoreMovesFinishedTest() {
         // setup scenario
         Character[][] board = {
-                {'X', 'X', 'O'},
-                {'O', 'O', 'X'},
-                {'X', 'O', 'X'},
+                {TicTacToe.X, TicTacToe.O, TicTacToe.X},
+                {TicTacToe.O, TicTacToe.O, TicTacToe.X},
+                {TicTacToe.X, TicTacToe.O, TicTacToe.X},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        boolean finished = game.isFinished();
+
+        // Assertions
+        Assert.assertTrue(finished);
+    }
+
+    @Test
+    public void notFinishedTest() {
+        // setup scenario
+        Character[][] board = {
+                {TicTacToe.X, null, TicTacToe.X},
+                {TicTacToe.O, TicTacToe.O, TicTacToe.X},
+                {TicTacToe.X, TicTacToe.O, TicTacToe.X},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        boolean finished = game.isFinished();
+
+        // Assertions
+        Assert.assertFalse(finished);
+    }
+
+    @Test
+    public void FinishedXWinnerTest() {
+        // setup scenario
+        Character[][] board = {
+                {TicTacToe.X, null, TicTacToe.O},
+                {TicTacToe.X, TicTacToe.O, TicTacToe.O},
+                {TicTacToe.X, TicTacToe.O, TicTacToe.X},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        boolean finished = game.isFinished();
+
+        // Assertions
+        Assert.assertTrue(finished);
+    }
+
+    @Test
+    public void FinishedOWinnerTest() {
+        // setup scenario
+        Character[][] board = {
+                {TicTacToe.X, null, TicTacToe.X},
+                {TicTacToe.O, TicTacToe.O, TicTacToe.O},
+                {TicTacToe.X, TicTacToe.X, TicTacToe.O},
         };
         game.setBoard(board);
 
@@ -31,9 +82,9 @@ public class TicTacToeTests {
     public void noMoreMovesDrawTest() {
         // setup scenario
         Character[][] board = {
-                {'X', 'X', 'O'},
-                {'O', 'O', 'X'},
-                {'X', 'O', 'X'},
+                {TicTacToe.X, TicTacToe.X, TicTacToe.O},
+                {TicTacToe.O, TicTacToe.O, TicTacToe.X},
+                {TicTacToe.X, TicTacToe.O, TicTacToe.X},
         };
         game.setBoard(board);
 
@@ -55,12 +106,12 @@ public class TicTacToeTests {
         game.setBoard(board);
 
         // Test execution
-        game.putX(3, 4);
+        game.putX(3, 3);
 
     }
 
     @Test
-    public void validPositionTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
+    public void putXTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
         // setup scenario
         Character[][] board = {
                 {null, null, null},
@@ -74,7 +125,29 @@ public class TicTacToeTests {
 
         Character[][] expectedBoard = {
                 {null, null, null},
-                {null, 'X', null},
+                {null, TicTacToe.X, null},
+                {null, null, null},
+        };
+
+        Assert.assertArrayEquals(expectedBoard, game.getBoard());
+    }
+
+    @Test
+    public void putOTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
+        // setup scenario
+        Character[][] board = {
+                {null, null, null},
+                {null, TicTacToe.X, null},
+                {null, null, null},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        game.putX(0, 1);
+
+        Character[][] expectedBoard = {
+                {null, TicTacToe.O, null},
+                {null, TicTacToe.X, null},
                 {null, null, null},
         };
 
@@ -86,12 +159,40 @@ public class TicTacToeTests {
         // setup scenario
         Character[][] board = {
                 {null, null, null},
-                {null, null, 'X'},
+                {null, null, TicTacToe.X},
                 {null, null, null},
         };
         game.setBoard(board);
 
         // Test execution
         game.putX(1, 2);
+    }
+
+    @Test(expected = NotYourTurnException.class)
+    public void notXTurnTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
+        // setup scenario
+        Character[][] board = {
+                {null, null, null},
+                {null, null, TicTacToe.X},
+                {null, null, null},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        game.putX(1, 1);
+    }
+
+    @Test(expected = NotYourTurnException.class)
+    public void notOTurnTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
+        // setup scenario
+        Character[][] board = {
+                {null, null, null},
+                {null, TicTacToe.O, TicTacToe.X},
+                {null, null, null},
+        };
+        game.setBoard(board);
+
+        // Test execution
+        game.putX(0, 1);
     }
 }
