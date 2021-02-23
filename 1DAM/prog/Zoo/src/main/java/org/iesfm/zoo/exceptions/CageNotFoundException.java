@@ -1,4 +1,6 @@
 package org.iesfm.zoo.exceptions;
 
-public class animalsOfTheCageNotFoundException {
+import java.util.Objects;
+
+public class CageNotFoundException extends Exception {
 }

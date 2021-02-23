@@ -184,7 +184,7 @@ MODIFY id INT;
 
 /* PRIMARY KEY */
 /* FOREIGN KEY */
--DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS employees;
 
 CREATE TABLE IF NOT EXISTS employees ( 
 	id_employee INT not null auto_increment, 
