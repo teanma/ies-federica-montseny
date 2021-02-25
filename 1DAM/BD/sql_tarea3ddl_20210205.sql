@@ -190,3 +190,41 @@ DROP FOREIGN KEY FK_pub_stocks;
 
 ALTER TABLE pubs 
 DROP FOREIGN KEY FK_cities_pubs;
+
+/*Ejercicio 9*/
+
+DROP TABLE owners;
+
+DROP TABLE pubs;
+
+DROP TABLE pub_employees;
+
+CREATE TABLE pubs (
+cod_pub INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(60) NOT NULL,
+licencia_fiscal VARCHAR(60) NOT NULL,
+domicilio VARCHAR(60),
+codigo_localidad INT NOT NULL,
+CONSTRAINT FK_cities_pubs
+FOREIGN KEY (cod_localidad) REFERENCES localidad(cods_localidad)
+);
+
+CREATE TABLE owners (
+dni_titular VARCHAR(9) PRIMARY KEY,
+nombre VARCHAR(60) NOT NULL,
+domicilio VARCHAR(60),
+cod_pub INT NOT NULL,
+CONSTRAINT FK_pubs
+FOREIGN KEY (cod_pub) REFERENCES pubs(cod_pub)
+);
+
+CREATE TABLE pub_employees (
+cod_pub INT NOT NULL,
+dni_empleado VARCHAR(9) NOT NULL,
+funcion VARCHAR(60) NOT NULL,
+PRIMARY KEY (cod_pub, dni_empleado, funcion),
+CONSTRAINT FK_pubs
+FOREIGN KEY (cod_pub) REFERENCES pubs(cod_pub),
+CONSTRAINT FK_employees
+FOREIGN KEY (dni_empleado) REFERENCES emplopyees(dni_empleado)
+);
