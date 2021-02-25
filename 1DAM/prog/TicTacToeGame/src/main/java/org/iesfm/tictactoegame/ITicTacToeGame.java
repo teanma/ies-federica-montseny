@@ -17,7 +17,7 @@ public interface ITicTacToeGame {
 
     boolean isFinished();
 
-    String getWinner();
+    Character getWinner();
 
-    String getTurn();
+    Character getTurn();
 }

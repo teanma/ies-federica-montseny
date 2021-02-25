@@ -8,14 +8,14 @@ import org.junit.Test;
 
 public class TicTacToeGameTests {
 
-    private TicTacToe game = new TicTacToe();
+    private TicTacToeGame game = new TicTacToeGame();
 
     @Test
     public void noMoreMovesTest(){
         Character[][] board = {
-                {TicTacToe.X, TicTacToe.X, TicTacToe.O},
-                {TicTacToe.O, TicTacToe.O, TicTacToe.O},
-                {TicTacToe.X, TicTacToe.O, TicTacToe.X}
+                {TicTacToeGame.X, TicTacToeGame.X, TicTacToeGame.O},
+                {TicTacToeGame.O, TicTacToeGame.O, TicTacToeGame.O},
+                {TicTacToeGame.X, TicTacToeGame.O, TicTacToeGame.X}
         };
         game.setBoard(board);
 
@@ -30,18 +30,18 @@ public class TicTacToeGameTests {
     @Test
     public void noMoreMovesDrawTest(){
         Character[][] board = {
-                {TicTacToe.X, TicTacToe.X, TicTacToe.O},
-                {TicTacToe.O, TicTacToe.O, TicTacToe.X},
-                {TicTacToe.X, TicTacToe.O, TicTacToe.X}
+                {TicTacToeGame.X, TicTacToeGame.X, TicTacToeGame.O},
+                {TicTacToeGame.O, TicTacToeGame.O, TicTacToeGame.X},
+                {TicTacToeGame.X, TicTacToeGame.O, TicTacToeGame.X}
         };
         game.setBoard(board);
 
         //Test execution
 
-        String winner = game.getWinner();
+        Character winner = game.getWinner();
 
         //Assertions
-        Assert.assertEquals("Draw", winner);
+        Assert.assertNull(winner);
     }
 
     @Test (expected = InvalidPositionException.class)
@@ -71,7 +71,7 @@ public class TicTacToeGameTests {
 
         Character[][] expectedBoard = {
                 {null, null, null},
-                {null, TicTacToe.X, null},
+                {null, TicTacToeGame.X, null},
                 {null, null, null}
         };
 
@@ -82,7 +82,7 @@ public class TicTacToeGameTests {
     public void occupiedPositionTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
         Character[][] board = {
                 {null, null, null}, 
-                {null, TicTacToe.O, TicTacToe.X}, 
+                {null, TicTacToeGame.O, TicTacToeGame.X},
                 {null, null, null}  
         };
 
@@ -94,7 +94,7 @@ public class TicTacToeGameTests {
     public void notYourTurnTest() throws NotYourTurnException, PositionInUseException, InvalidPositionException {
         Character[][] board = {
                 {null, null, null}, 
-                {null, null, TicTacToe.X}, 
+                {null, null, TicTacToeGame.X},
                 {null, null, null} 
         };
 
