@@ -9,5 +9,8 @@
         <module name="CompanyComposition" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CompanyComposition" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
